@@ -10,13 +10,15 @@
 
 ## 📑 Table of Contents 
 
-[📌 1. Background & Overview](#1-background-overview)
+[📌 1. Background & Overview](#background-overview)  
 [📂 2. Dataset Description & Data Structure](#dataset-description--data-structure)  
 [🧹 3. Data Cleaning & Preprocessing](#data-cleaning--preprocessing)  
 [🔍 4. Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)  
 [🧮 5. Apply RFM Model](#apply-rfm-model)
 
-## 📌 1. Background & Overview
+---
+
+## Background & Overview
 
 ### Objective ###
 
@@ -56,7 +58,7 @@ RFM (Recency, Frequency, Monetary) is a customer analysis method that evaluates 
 
 Using RFM allows businesses to segment customers based on their value and apply these insights to improve marketing activities and enhance customer engagement.
 
-## 📂 2. Dataset Description & Data Structure
+## Dataset Description & Data Structure
 
 ### 📌 Data Source  
 - **Source**: Provided dataset for E-commerce retail analysis  
@@ -112,7 +114,7 @@ The dataset consists of **two tables (sheets)**:
 
 </details>
 
-## 🧹 3. Data Cleaning & Preprocessing
+## Data Cleaning & Preprocessing
 [In 1]:  
 ```python
 df = pd.read_excel(ecommerce_retail_xlsx)
@@ -243,7 +245,8 @@ After identifying cancellation invoices, further validation is required:
 - These are **invalid transactions** and should also be **removed** during data cleaning.
 
 ---
-## 🔍 4. Exploratory Data Analysis (EDA)
+
+## Exploratory Data Analysis (EDA)
 
 ### 🛠 Step 1. Convert to correct Data type
 [In 4]:
@@ -262,7 +265,9 @@ df
 Unit_Quan_0 = df[(df['UnitPrice'] <= 0) | (df['Quantity'] <= 0)]
 Unit_Quan_0 
 ```
-## 🧮 5. Apply RFM Model
+
+## Apply RFM Model
+
 #### 🛠 Step 1. Calculate RFM Score
 [In 6]:
 
