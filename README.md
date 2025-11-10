@@ -14,10 +14,9 @@
 [📂 2. Dataset Description & Data Structure](#dataset-description--data-structure)  
 [🧹 3. Data Cleaning & Preprocessing](#data-cleaning--preprocessing)  
 [🔍 4. Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)  
-[🧮 5. Apply RFM Model](#apply-rfm-model)  
-[📊 6. Visualization & Analysis](#visualization--analysis)  
-[💡 7. Insight & Recommendation](#insight--recommendation)
-## 1. 📌 Background & Overview
+[🧮 5. Apply RFM Model](#apply-rfm-model)
+
+## 📌 1. Background & Overview
 
 ### Objective ###
 
@@ -57,7 +56,7 @@ RFM (Recency, Frequency, Monetary) is a customer analysis method that evaluates 
 
 Using RFM allows businesses to segment customers based on their value and apply these insights to improve marketing activities and enhance customer engagement.
 
-## 2. 📂 Dataset Description & Data Structure
+## 📂 2. Dataset Description & Data Structure
 
 ### 📌 Data Source  
 - **Source**: Provided dataset for E-commerce retail analysis  
@@ -113,7 +112,7 @@ The dataset consists of **two tables (sheets)**:
 
 </details>
 
-## 3. 🧹 Data Cleaning & Preprocessing
+## 🧹 3. Data Cleaning & Preprocessing
 [In 1]:  
 ```python
 df = pd.read_excel(ecommerce_retail_xlsx)
@@ -244,7 +243,7 @@ After identifying cancellation invoices, further validation is required:
 - These are **invalid transactions** and should also be **removed** during data cleaning.
 
 ---
-## 4. 🔍 Exploratory Data Analysis (EDA)
+## 🔍 4. Exploratory Data Analysis (EDA)
 
 ### 🛠 Step 1. Convert to correct Data type
 [In 4]:
@@ -263,7 +262,7 @@ df
 Unit_Quan_0 = df[(df['UnitPrice'] <= 0) | (df['Quantity'] <= 0)]
 Unit_Quan_0 
 ```
-## 5. 🧮 Apply RFM Model
+## 🧮 5. Apply RFM Model
 #### 🛠 Step 1. Calculate RFM Score
 [In 6]:
 
@@ -790,3 +789,297 @@ Guide them toward becoming Potential Loyalists.
 ### ✅ 4. Lost Customers = low priority
 Do not invest heavily in this segment.
 
+[In 20]:
+```python
+recency_mean = data_join.groupby('Segment', as_index=False)['Recency'].mean()
+plt.figure(figsize=(16, 8))
+ax = sns.barplot(x='Segment', y='Recency', data=recency_mean, palette='viridis')
+plt.title('Average Recency by Segment')
+plt.xlabel('Segment')
+plt.ylabel('Average Recency')
+plt.xticks(rotation=45, ha='right')
+for i, v in enumerate(recency_mean['Recency']):
+    ax.text(i, v + 1, f"{v:.1f}", ha='center', va='bottom', fontsize=11, fontweight='bold', color='black')
+plt.tight_layout()
+plt.show()
+```
+[Out 20]:
+
+<img width="933" height="460" alt="image" src="https://github.com/user-attachments/assets/a7361ffb-14e5-4607-ad3b-3f921e60d0df" />
+
+# 📊 Average Recency by Segment Analysis - Insights & Recommendations
+
+## 🔍 Key Insights
+
+### 1. **High-Risk Segments Requiring Immediate Intervention**
+- **"At Risk" (283.3)**: Highest recency, indicating customers haven't purchased in a long time
+- **"Cannot Lose" (237.9) & "Championship Customers" (215.1)**: High-value customers showing signs of disengagement
+
+### 2. **High-Potential Segments Needing Special Care**
+- **"New Customers" (32.4)**: Most recent customers, crucial to retain from the start
+- **"Loyal Customers" (49.6)**: Loyal customers requiring relationship maintenance
+
+### 3. **Significant Recency Gap Between Segments**
+- Difference between highest and lowest groups: **250.9 points**
+- Indicates clear polarization in purchasing behavior
+
+## 🎯 Strategic Recommendations
+
+### 🚨 **URGENT ACTIONS - For High Recency Groups**
+
+**For "At Risk" (283.3):**
+- Implement immediate "Win-back" campaigns with special offers
+- Send surveys to understand reasons for not returning
+- Offer: "We miss you - 30% discount + free shipping"
+
+**For "Cannot Lose" & "Championship Customers":**
+- Personal outreach from account managers
+- Early access to new products/services
+- Exclusive loyalty rewards
+
+### 💎 **RETENTION FOCUS - For Medium Recency Groups**
+
+**For "Low Customers" & "Low 1" (107.9 - 165.7):**
+- Bi-weekly reactivation campaigns
+- Cross-selling based on purchase history
+- Point-based incentive programs
+
+### 🌟 **GROWTH ACCELERATION - For Low Recency Groups**
+
+**For "New Customers" (32.4):**
+- 30-day onboarding sequence
+- First-purchase follow-up with special offer for second purchase
+- Referral program introduction
+
+**For "Loyal Customers" (49.6):**
+- VIP program with tier benefits
+- Birthday/anniversary surprises
+- Sneak peeks and beta testing opportunities
+
+## 📈 Measurement & Optimization
+
+### Tracking KPIs:
+- **Recency reduction** for "At Risk" group (target: -20% in 3 months)
+- **Retention rate** for "New Customers" (target: >60% after 90 days)
+- **Purchase frequency** for "Loyal Customers"
+
+### A/B Testing Required:
+- Different discount levels (20% vs 30% vs 40%)
+- Communication channels (email vs SMS vs push notification)
+- Message framing ("We miss you" vs "Special offer just for you")
+
+## 🔄 Continuous Improvement
+
+1. **Segment refinement**: Additional RFM analysis combined with CLV
+2. **Personalization**: Based on browsing behavior and purchase history
+3. **Automation**: Trigger-based campaigns when recency exceeds thresholds
+
+## 🎯 Priority Ranking
+
+| Priority | Customer Group | Action |
+|----------|----------------|---------|
+| 1 | At Risk & Cannot Lose | Critical - Immediate intervention |
+| 2 | New Customers | Preventive - Retention focus |
+| 3 | Championship & Loyal Customers | Maintenance - Optimization |
+| 4 | Low Customers | Improvement - Reactivation |
+
+[In 21]:
+```python
+
+frequency_mean = data_join.groupby('Segment', as_index=False)['Frequency'].mean()
+plt.figure(figsize=(16, 8))
+ax = sns.barplot(x='Segment', y='Frequency', data=frequency_mean, palette='viridis')
+plt.title('Average Frequency by Segment')
+plt.xlabel('Segment')
+plt.ylabel('Average Frequency')
+plt.xticks(rotation=45, ha='right')
+for i, v in enumerate(frequency_mean['Frequency']):
+    ax.text(i, v + 1, f"{v:.1f}", ha='center', va='bottom', fontsize=11, fontweight='bold', color='black')
+plt.tight_layout()
+plt.show()
+```
+[Out 21]:
+
+<img width="924" height="432" alt="image" src="https://github.com/user-attachments/assets/c7da55da-c0eb-4ae6-a2a9-44623b8ff2ed" />
+
+# 📊 Average Frequency by Segment Analysis - Insights & Recommendations
+
+## 🔍 Understanding Frequency Metrics
+
+### **What Frequency Measures**
+- **Frequency** = Average number of purchases made by customers in a specific time period
+- **High Frequency** = Customers purchase regularly, strong buying habits
+- **Low Frequency** = Customers purchase infrequently, irregular buying patterns
+
+## 📈 Segment Performance Analysis
+
+### **🏆 Top Performing Segments (High Frequency)**
+- **"Championship Customers" (113.7)**: Elite customers with extremely high purchase frequency
+- **"Loyal Customers" (99.1)**: Highly loyal customers with consistent purchasing behavior
+- **"Cannot Lose" (69.9)**: Important customers with strong purchase frequency
+
+### **⚠️ Segments Needing Improvement (Low Frequency)**
+- **"New Customers" (11.1)**: New customers with low frequency (need habit-building time)
+- **"At Risk" (21.7)**: At-risk customers with infrequent purchasing patterns
+- **"Low Customers" (17.2)**: Low-engagement customers requiring attention
+
+## 💡 Key Business Insights
+
+### **🔄 Inverse Relationship with Recency**
+- Segments with **High Recency** (At Risk: 283.3) show **Low Frequency** (21.7)
+- Segments with **Low Recency** (New Customers: 32.4) show **Low Frequency** (11.1)
+- Segments with **High Frequency** typically have **Medium Recency** (Championship: 215.1)
+
+### **🎯 Customer Behavior Patterns**
+
+| Segment | Frequency Score | Behavioral Characteristics |
+|---------|----------------|----------------------------|
+| Championship | 113.7 | Very frequent purchases, ideal customers |
+| Loyal | 99.1 | Highly loyal, consistent purchasing |
+| Cannot Lose | 69.9 | Important customers, strong frequency |
+| At Risk | 21.7 | Infrequent purchases, high churn risk |
+| New Customers | 11.1 | New,尚未形成购买习惯 |
+
+## 🎯 Strategic Recommendations
+
+### **✅ For High Frequency Segments**
+
+**Championship & Loyal Customers:**
+- Implement **VIP retention programs**
+- Focus on **increasing average order value**
+- Offer exclusive early access and premium benefits
+- Create loyalty tiers with escalating rewards
+
+**Cannot Lose Customers:**
+- Personal account management
+- Special recognition programs
+- Cross-selling and upselling opportunities
+
+### **📈 For Low Frequency Segments**
+
+**New Customers:**
+- Implement **onboarding sequences**
+- Welcome programs with second-purchase incentives
+- Educational content about product usage
+- Frequency-building campaigns
+
+**At Risk & Low Customers:**
+- Reactivation campaigns
+- Win-back offers with compelling value
+- Reminder campaigns for favorite products
+- Personalized recommendations
+
+## 🔄 Integrated RFM Strategy
+
+### **High Priority Combinations:**
+- **High Frequency + Low Recency** = Gold customers (retain & grow)
+- **Low Frequency + High Recency** = Win-back focus (reactivate)
+- **High Frequency + High Recency** = Potential champions (nurture)
+
+### **Medium Priority:**
+- **Medium Frequency + Medium Recency** = Growth opportunities (develop)
+
+## 📊 Performance Tracking
+
+### **Key KPIs to Monitor:**
+- Frequency improvement for low-performing segments
+- Retention rates for high-frequency segments
+- Conversion from low to medium frequency tiers
+- Customer lifetime value by frequency segment
+
+### **Optimization Strategies:**
+- A/B test frequency-building campaigns
+- Segment-specific communication frequency
+- Personalized product recommendations
+- Behavioral trigger campaigns
+
+## 🚀 Action Plan
+
+### **Immediate Actions (0-30 days):**
+1. Launch reactivation campaigns for At Risk segment
+2. Implement onboarding for New Customers
+3. Develop VIP program for Championship customers
+
+### **Medium Term (30-90 days):**
+1. Create frequency-building ladder campaigns
+2. Develop segment-specific communication strategies
+3. Implement loyalty program enhancements
+
+### **Long Term (90+ days):**
+1. Advanced personalization based on frequency patterns
+2. Predictive modeling for frequency optimization
+3. Automated lifecycle marketing programs
+
+[In 22]:
+```python
+fig, ax1 = plt.subplots(figsize=(25,8))
+bars = ax1.bar(grp_total['Segment'], grp_total['Count ID'], color='#A3C4F3', label='Customer Count')
+ax2 = ax1.twinx()
+line = ax2.plot(grp_total['Segment'], grp_total['Monetary'], color='#E07A5F', marker='o', label='Monetary Value')
+for bar in bars:
+    height = bar.get_height()
+    ax1.text(bar.get_x() + bar.get_width()/2, height, f'{height:.0f}',
+             ha='center', va='bottom', fontsize=10, color='#3A6EA5', fontweight='bold')
+for i, v in enumerate(grp_total['Monetary']):
+    ax2.text(i, v, f'{v:,.0f}', color='#E07A5F', fontsize=10, ha='center', va='bottom', fontweight='bold')
+ax1.set_xlabel('Segment', fontsize=12, fontweight='bold')
+ax1.set_ylabel('Customer Count', color='black', fontsize=12, fontweight='bold')
+ax2.set_ylabel('Monetary Value', color='black', fontsize=12, fontweight='bold')
+plt.title('Customer Count vs Monetary by Segment', fontsize=16, fontweight='bold')
+plt.xticks(rotation=45, ha='right', fontsize=11, fontweight='bold')
+lines, labels = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax1.legend(lines + lines2, labels + labels2,
+            loc='upper right', fontsize=11, frameon=True, facecolor='white',
+            edgecolor='gray', title='Legend', title_fontsize=12)
+plt.tight_layout()
+plt.show()
+
+```
+[Out 22]:
+
+<img width="913" height="312" alt="image" src="https://github.com/user-attachments/assets/ccd405a3-3633-4f7c-b085-f91d994678fd" />
+
+### 📊 Chart Summary: Customer Count vs Monetary Value by Segment
+
+The provided chart compares two key metrics—**Customer Count** (light blue bars) and **Monetary Value** (orange/red line) across 10 distinct customer segments.
+
+---
+
+### 🔑 Detailed Segment Analysis
+
+The segments can be grouped based on their contribution and performance:
+
+#### 1. High-Performance / High-Value Segments
+
+| Segment | Customer Count | Monetary Value | Key Insight |
+| :--- | :--- | :--- | :--- |
+| **🏆 Champions** | 300 | **655,549** (Highest) | This group yields the **highest monetary value**, making them the most valuable in terms of revenue contribution. |
+| **🥈 At Risk** | 369 | 453,380 (2nd Highest) | High value, but potentially unstable. Requires retention strategies. |
+| **Loyal** | 334 | 566,694 (3rd Highest) | Very high value relative to the customer count, indicating high profitability per customer. |
+| **🥇 Hibernating Customers** | **789** (Highest) | 385,122 (Moderate/High) | The **largest segment by count**, and still contributes a significant monetary value. They need reactivation efforts. |
+
+#### 2. Potential and Moderate Segments
+
+| Segment | Customer Count | Monetary Value | Key Insight |
+| :--- | :--- | :--- | :--- |
+| **Potential Loyalist** | 499 (2nd Highest) | 387,037 | A large group with good value. They are prime candidates for conversion into "Loyal" customers. |
+| **New Customers** | 305 | 66,414 | Moderate count, but low value. Focus should be on onboarding and first purchase retention. |
+| **About To Sleep** | 187 | 54,670 | Low count and low value, suggesting they are on the verge of becoming "Lost Customers." |
+| **Need Attention** | 220 | 293,915 | Moderate value, but low count. Strategies are needed to prevent defection. |
+
+#### 3. Lowest Performance Segments
+
+| Segment | Customer Count | Monetary Value | Key Insight |
+| :--- | :--- | :--- | :--- |
+| **Cannot Lose Them** | **79** (Lowest) | 109,785 | The smallest segment, but the monetary value is not the absolute lowest, implying a high **value per individual** customer. They must be prioritized for special retention campaigns. |
+| **Lost Customers** | 367 | **56,414** (Lowest) | A large group by count that currently provides very little value. |
+| **Promising** | 127 | 102,473 | Very low count and low value. |
+
+---
+
+### 🚀 Key Takeaways
+
+1.  **Focus on Value:** The **"Champions"** segment, while not the largest, drives the most revenue and should be highly prioritized.
+2.  **Activate Volume:** The largest groups, **"Hibernating Customers"** and **"Potential Loyalist,"** represent the biggest opportunity for future growth if successfully engaged.
+3.  **Prevent Churn:** Special attention is needed for **"At Risk"** and **"Cannot Lose Them"** customers, as they represent high value that could easily be lost.
