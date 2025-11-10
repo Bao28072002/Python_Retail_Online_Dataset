@@ -9,11 +9,21 @@
 **Tools Used:** Python
 
 ## 📑 Table of Contents 
-[📌 1. Background & Overview](#background--overview)
-[📂 2. Dataset Description & Data Structure](#dataset-description--data-structure)  
-[🧹 3. Data Cleaning & Preprocessing](#data-cleaning--preprocessing)  
-[🔍 4. Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)  
+[📌 1. Background & Overview](#background-overview)<br>
+[📂 2. Dataset Description & Data Structure](#dataset-description--data-structure)<br>
+[🧹 3. Data Cleaning & Preprocessing](#data-cleaning--preprocessing)<br>
+[🔍 4. Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)<br>
 [🧮 5. Apply RFM Model](#apply-rfm-model)
+
+---
+
+## Background & Overview
+Nội dung...
+
+---
+
+## Dataset Description & Data Structure
+Nội dung...
 
 ---
 
