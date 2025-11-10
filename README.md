@@ -432,9 +432,361 @@ for col in features:
     plt.show()
 ```
 
-[Out 13]:
+[Out 14]:
 
-<img width="707" height="343" alt="image" src="https://github.com/user-attachments/assets/c146eba0-5653-4fd8-ab03-a58510a5d83e" />
+![RecencyDistribution](https://github.com/user-attachments/assets/c146eba0-5653-4fd8-ab03-a58510a5d83e)
 
-<img width="706" height="351" alt="image" src="https://github.com/user-attachments/assets/ae2a43e6-e053-4f03-b9e1-b1c7f7a4d3c0" />
+![FrequencyDistribution](https://github.com/user-attachments/assets/ae2a43e6-e053-4f03-b9e1-b1c7f7a4d3c0)
+
+![MonetaryDistribution](https://github.com/user-attachments/assets/201b8758-b9f8-4b0d-b7a8-69275bf69100)
+
+## 6. 🔍 Overview Segmentation
+
+[In 15]:
+```python
+grp_total = (data_join.groupby('Segment').agg({'CustomerID': 'count','Monetary': 'sum'}).reset_index())
+grp_total['Customer Percent(%)'] = (grp_total['CustomerID'] / grp_total['CustomerID'].sum() * 100).round(2)
+grp_total['Sales Percent(%)'] = (grp_total['Monetary'] / grp_total['Monetary'].sum() * 100).round(2)
+grp_total = grp_total.rename(columns={'CustomerID': 'Count ID'})
+grp_total
+```
+
+[Out 15]:
+
+![Segmentation](https://github.com/user-attachments/assets/78308e02-298f-46dd-ae90-3093b6bebefe)
+
+[In 16]:
+```python
+colors = sns.color_palette("YlGnBu", len(grp_total))
+fig,ax = plt.subplots(1, figsize=(20,5))
+sq.plot(sizes=grp_total["Count ID"],
+              label=grp_total["Segment"],
+              value=[f'{x}%' for x in grp_total["Customer Percent(%)"]],
+              alpha=.8,
+              color=colors,
+              bar_kwargs=dict(linewidth=1.5, edgecolor="white")
+              )
+plt.title("Customer Size by Segment", fontsize=13)
+plt.axis("off")
+plt.show()
+```
+
+[Out 16]:
+
+<img width="900" height="269" alt="image" src="https://github.com/user-attachments/assets/8ed6b785-85b8-494c-8143-fbf35da45fe7" />
+
+## 📊 RFM Segment Summary & Strategic Actions
+
+### ✅ **High-Value Segments (31.58%)**
+Includes:
+- **Champions (8.39%)** – Best customers with high purchase frequency and high order value  
+- **Loyal Customers (9.34%)**  
+- **Potential Loyalists (13.85%)**
+
+**These three segments contribute the largest share of revenue.**
+
+**Recommended Strategies:**
+- Build a **VIP customer program** with exclusive perks, loyalty points, and premium benefits.  
+- Personalize product recommendations.  
+- Focus on **high-end products** or **high-value bundles** to increase average order value.
+
+---
+
+### ⚠️ **Inactive or At-Risk Segments (37.57%)**
+Includes:
+- **Hibernating Customers (22.07%)**  
+- **Lost Customers (10.27%)**  
+- **About to Sleep (5.23%)**
+
+**These segments account for over one-third of customers who are no longer actively purchasing.**
+
+**Recommended Strategies:**
+- Send **special offers** (discounts, birthday gifts, cashback vouchers).  
+- Implement **personalized re-engagement programs**, such as:
+  - Post-purchase follow-up  
+  - Technical support  
+  - Priority customer service  
+
+---
+
+### 🌱 **New & Developing Customers (12.17%)**
+Includes:
+- **New Customers (8.62%)**  
+- **Promising (3.55%)**
+
+**These groups are in early stages with potential for growth.**
+
+**Recommended Strategies:**
+- Create a strong first impression with a **welcome email**, product guides, or next-order discounts.  
+- Encourage early repeat purchases to move them into the **Potential Loyalist** segment through:
+  - Reward points  
+  - Subscription bundles  
+  - Regular promotional packages  
+
+[In 17]:
+```python
+fig,ax = plt.subplots(1, figsize=(20,5))
+sq.plot(sizes=grp_total["Count ID"],
+              label=grp_total["Segment"],
+              value=[f'{x}%' for x in grp_total["Sales Percent(%)"]],
+              alpha=.8,
+              color=colors,
+              bar_kwargs=dict(linewidth=1.5, edgecolor="white")
+              )
+plt.title("Sale by Segment", fontsize=13)
+plt.axis("off")
+plt.show()
+```
+[Out 17]:
+
+<img width="887" height="253" alt="image" src="https://github.com/user-attachments/assets/73b6f20b-615f-455b-ae8e-6388d5bc474a" />
+
+## 🔥 1. High-Revenue Segments
+
+### **Champions – ~21.75%**
+- Most valuable customers  
+- Purchase frequently with high order value  
+- The “backbone” of your revenue  
+
+### **Loyal – ~19.35%**
+- Consistently repeat purchases  
+- Strong potential for upsell with the right incentives  
+
+### **Potential Loyalist – ~9.85%**
+- Emerging segment  
+- Can easily be converted into Loyal or Champions  
+
+👉 **These three segments contribute nearly 50% of total revenue → must prioritize retention & upsell.**
+
+---
+
+## ⚠️ 2. At-Risk but Valuable Segments
+
+### **At Risk – ~15.52%**
+- Significant revenue contribution  
+- Showing declining engagement  
+- Requires rescue campaigns  
+
+### **Need Attention – ~8.66%**
+- Previously active but now less engaged  
+- A single promo or reminder can re-activate them  
+
+### **Hibernating Customers – ~10.52%**
+- Old customers who haven’t purchased for a long time  
+- Send vouchers or run reactivation campaigns  
+
+👉 **Nearly 35% of revenue is “sleeping” → reactivation can boost revenue quickly.**
+
+---
+
+## ❌ 3. Low-Revenue Segments
+
+### **Lost Customers – ~2.24%**
+- Almost churned completely  
+- Minimal revenue → gentle remarketing only  
+
+### **Cannot Lose Them – ~3.69%**
+- At the edge of leaving but still valuable  
+- Requires urgent retention efforts  
+
+### **About to Sleep – ~1.80%**
+- Low purchase activity and about to churn  
+
+---
+
+## 🌱 4. New & Potential Segments
+
+### **New Customers – ~2.21%**
+- First-time buyers  
+- Revenue not yet high  
+
+### **Promising – ~3.92%**
+- Bought a few times  
+- Strong potential for future growth  
+
+👉 **Deliver a great onboarding experience to move them into the Potential Loyalist group.**
+
+| Segment Group | Meaning | Priority Level |
+|---------------|---------|----------------|
+| **Champions, Loyal, Potential Loyalist** | Contribute the largest share of revenue | ⭐ Very High |
+| **At Risk, Need Attention, Hibernating** | Significant revenue but currently at risk | ✅ High |
+| **New, Promising** | Early-stage customers with potential to grow | ⚡ Medium |
+| **Lost, About To Sleep, Cannot Lose Them** | Low contribution, high churn risk | ➖ Low |
+
+[In 18]:
+```python
+plt.figure(figsize=(16,8))
+sns.scatterplot(
+    x='Frequency',
+    y='Monetary',
+    hue='Segment',
+    size='Recency',
+    sizes=(20, 200),
+    alpha=0.6,
+    data=data_join
+)
+plt.title("Monetary vs Frequency")
+plt.xlim(0, 220)
+plt.ylim(0, 4000)
+plt.show()
+```
+[Out 18]:
+
+<img width="927" height="479" alt="image" src="https://github.com/user-attachments/assets/924e37b6-0bde-4b47-9371-121e88848fa2" />
+
+## 📊 Meaning of the "Monetary vs Frequency" Scatter Plot
+
+### ✅ 1. Main Relationship
+- There is a clear upward trend:  
+  **Higher purchase frequency → Higher total spending (Monetary).**
+- Loyal and high-value customers cluster on the **top-right** area of the chart.
+
+---
+
+## 🥇 2. Champions & Loyal Stand Out
+- These segments appear mostly in the **upper-right quadrant** (high Frequency + high Monetary).
+- They represent customers who purchase often and spend a lot.
+- This is the ideal customer group.
+
+---
+
+## ⚠️ 3. At Risk & Hibernating: High Spending but Becoming Inactive
+- Many orange and light-blue points are seen with:
+  - **High Monetary**
+  - **Low or moderate Frequency**
+  - **Large bubble sizes** (high Recency → haven’t purchased for a long time)
+- These customers used to spend a lot but are **falling inactive**.
+- Critical group for reactivation campaigns.
+
+---
+
+## ❌ 4. Low-Revenue Segments (Lost, About To Sleep)
+- Found mostly on the **bottom-left** (low Frequency + low Monetary).
+- Small bubble sizes (low Recency).
+- Represents customers who have low engagement or are about to churn.
+
+---
+
+## 🌱 5. New & Promising Customers
+- Appearing in the **lower-mid area**:
+  - Low Frequency (new buyers)
+  - Moderate Monetary
+- These groups show **future revenue potential**.
+
+---
+
+## ✅ Summary
+- **Frequency and Monetary are positively correlated.**
+- **Champions & Loyal** drive the highest revenue (top-right cluster).
+- **At Risk & Hibernating** need targeted reactivation.
+- **Lost & About To Sleep** contribute little revenue.
+- **New & Promising** should be nurtured to move into high-value segments.
+
+[In 19]:
+```python
+plt.figure(figsize=(16,8))
+sns.scatterplot(
+    x='Recency',
+    y='Monetary',
+    hue='Segment',
+    size='Recency',
+    sizes=(20, 200),
+    alpha=0.6,
+    data=data_join
+)
+plt.title("Monetary vs Recency ")
+plt.xlim(0, 450)
+plt.ylim(0, 4000)
+plt.show()
+```
+[Out 19]:
+
+<img width="899" height="474" alt="image" src="https://github.com/user-attachments/assets/f9efa992-57a3-4c78-a713-e033c75b9e30" />
+
+# 📊 Meaning & Insights from the “Monetary vs Recency” Chart
+
+## ✅ Overall Meaning
+- **Recency (X-axis)**: number of days since last purchase  
+  → Higher Recency = customer has not purchased for a long time  
+- **Monetary (Y-axis)**: total spending  
+- **Bubble size**: Frequency (number of purchases)  
+- **Colors**: Different RFM segments  
+
+The chart shows **no clear upward trend**, meaning:
+**High-spending customers can still stop buying for a long period.**
+
+---
+
+# ✅ Insights by Segment
+
+## 🟩 Champions
+- Mostly at **low Recency (< 50 days)**  
+- High Monetary and high Frequency  
+✅ Must keep engaging this group with VIP programs.
+
+---
+
+## 🟦 Loyal
+- Recency mostly under 100 days  
+- Good spending and steady purchases  
+✅ Easy to convert into Champions through upsell and loyalty points.
+
+---
+
+## 🟧 At Risk
+- Recency spreads widely from 50–300+ days  
+- Many have **high Monetary but long Recency**  
+⚠️ These were valuable customers but are becoming inactive.
+
+✅ Reactivation needed: personalized emails, vouchers, support calls.
+
+---
+
+## 🟪 Hibernating Customers
+- High Recency (150–350+ days)  
+- Medium to high Monetary  
+⚠️ They “disappeared” for a long time.
+
+✅ Use strong reactivation campaigns (discounts, “We miss you” messages).
+
+---
+
+## 🔴 Lost Customers
+- Very high Recency (250–360+) and low Monetary  
+❌ Low ROI if focusing on them.
+
+✅ Use only light remarketing (monthly newsletters or soft reminders).
+
+---
+
+## 🟡 Cannot Lose Them
+- High Recency but still had good Monetary  
+⚠️ High-value customers on the edge of leaving.
+
+✅ Consider urgent retention actions: direct calls, premium voucher.
+
+---
+
+## 🌱 New Customers & Promising
+- Low Recency (recent buyers)  
+- Low–medium Monetary  
+✅ Important stage to build trust.
+
+✅ Encourage second purchase using onboarding flows and next-order discounts.
+
+---
+
+# ✅ Key Strategic Insights
+
+### ✅ 1. High Monetary + High Recency = **At Risk** → must prioritize
+These customers brought high revenue but are now “silent”.
+
+### ✅ 2. Champions & Loyal = stable revenue foundation
+Maintain engagement through VIP benefits and personalized offers.
+
+### ✅ 3. New & Promising = nurture early to grow future revenue
+Guide them toward becoming Potential Loyalists.
+
+### ✅ 4. Lost Customers = low priority
+Do not invest heavily in this segment.
 
