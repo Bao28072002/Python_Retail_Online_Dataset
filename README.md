@@ -10,7 +10,7 @@
 
 ## 📑 Table of Contents 
 
-[📌 1. Background & Overview](#background--overview)  
+[📌 1. Background & Overview](#1-background-overview)
 [📂 2. Dataset Description & Data Structure](#dataset-description--data-structure)  
 [🧹 3. Data Cleaning & Preprocessing](#data-cleaning--preprocessing)  
 [🔍 4. Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)  
