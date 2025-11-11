@@ -1,7 +1,6 @@
 # 🛒 Customer Segmentation For Marketing Campaigns in A Retail Global SuperStore | Python
 
-<img width="1200" height="706" alt="image" src="https://github.com/user-attachments/assets/528d9176-7b56-4245-a592-f4a089b8fbe6" />
-
+<img width="1024" height="448" alt="image" src="https://github.com/user-attachments/assets/88b86c69-3ab2-43e5-9868-af52e711f0f3" />
 
 **Author:** Lê Gia Bảo
 
