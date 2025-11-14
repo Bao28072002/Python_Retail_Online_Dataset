@@ -32,17 +32,17 @@
 - Visualization  
 - Actionable recommendations to help the Marketing and Sales teams optimize their strategies
 
-👤 **Who is this project for?**  
-
-✔️ Marketing & Sales Department  
-✔️ Decision-makers & stakeholders  
-
-## ❓ Business Questions
+  ## ❓ Business Questions
 
 ✔️ How can customers be segmented effectively using the RFM model?  
 ✔️ Which customer groups should be prioritized for retention and promotional campaigns?  
 ✔️ What insights can help improve marketing strategies and customer engagement?  
 ✔️ What strategies should be applied to each customer segment to maximize value?
+
+👤 **Who is this project for?**  
+
+✔️ Marketing & Sales Department  
+✔️ Decision-makers & stakeholders  
 
 ### RFM Analysis Overview  
 
