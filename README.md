@@ -32,7 +32,7 @@
 - Visualization  
 - Actionable recommendations to help the Marketing and Sales teams optimize their strategies
 
-  ## ❓ Business Questions
+## ❓ Business Questions
 
 ✔️ How can customers be segmented effectively using the RFM model?  
 ✔️ Which customer groups should be prioritized for retention and promotional campaigns?  
