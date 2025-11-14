@@ -318,8 +318,23 @@ data_join
 #Outlier Monetary
 fig=plt.figure(1,figsize=(9,6))
 plt.boxplot(data_join['Monetary'])
+
+#Outlier Recency
+fig=plt.figure(1,figsize=(9,6))
+plt.boxplot(data_join['Recency'])
+
+#Outlier Frequency
+fig=plt.figure(1,figsize=(9,6))
+plt.boxplot(data_join['Frequency'])
 ```
 [Out 9]:
+
+<p float="left">
+  <img width="781" height="491" alt="image" src="https://github.com/user-attachments/assets/315fcaea-352f-45d4-b7f8-2257484a8ce8" />
+  <img width="769" height="498" alt="image" src="https://github.com/user-attachments/assets/b9afa80f-8a29-4303-84c6-4d6cc45511c4" />
+  <img width="783" height="497" alt="image" src="https://github.com/user-attachments/assets/de585904-607e-4e2a-95c0-83a952ab5325" />
+</p>
+
 
 <img width="781" height="491" alt="image" src="https://github.com/user-attachments/assets/315fcaea-352f-45d4-b7f8-2257484a8ce8" />
 
