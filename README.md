@@ -15,7 +15,7 @@
 [🔍 4. Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)<br>
 [🧮 5. Apply RFM Model](#apply-rfm-model)
 
-## Background & Overview
+## 📌 Background & Overview
 
 ### Objective ###
 
