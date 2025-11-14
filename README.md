@@ -127,6 +127,8 @@ During the initial data exploration phase, several data quality issues were iden
 
 ## ⚡ Key Issues Identified
 
+</details>
+
 ### 1. Negative Values in `Quantity` and `UnitPrice`
 Negative values in these columns are not logically valid and require review.
 
@@ -160,17 +162,9 @@ These should be reviewed manually and flagged for further processing.
 
 ## 🔎 Data Validation & Error Identification
 
-- **Description Consistency Check:**  
-  Merged `description_check_update` with the main `ecommerce` dataset to detect description mismatches.
-
 - **Negative Quantities & Cancellations:**  
   Verified whether negative `Quantity` values correspond to cancellations based on the rule:  
   `InvoiceNo` starting with `"C"` = cancellation.
-
-- **Next Step:**  
-  Review all flagged errors and verify cancellation logic to ensure data integrity.
-
----
 
 ## 🚨 Identifying Invalid Transactions
 After identifying cancellation invoices, further validation is required:
@@ -179,6 +173,7 @@ After identifying cancellation invoices, further validation is required:
   → These indicate potential data errors and should be corrected or excluded.
 
 ---
+</details>
 
 ## ✨ Conclusion & Recommendations
 
@@ -196,25 +191,7 @@ After identifying cancellation invoices, further validation is required:
 
 **Action:**  
 - These transactions represent **canceled orders** and should be **removed** from the dataset.
-
----
-
-### ❌ Negative Quantity with Non-Cancellation Invoice
-**Condition:**  
-- `Quantity < 0` **but** `InvoiceNo` does **not** start with `'C'`
-
-**Action:**  
-- These rows contain **incorrect product descriptions** or invalid entries and should be **excluded** from the dataset.
-
----
-
-### ❌ Negative Unit Price + Incorrect Description
-**Condition:**  
-- `UnitPrice < 0` **and** description flagged as incorrect
-
-**Action:**  
-- These are **invalid transactions** and should also be **removed** during data cleaning.
-
+- 
 ---
 
 ## Exploratory Data Analysis (EDA)
