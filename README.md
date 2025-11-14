@@ -112,32 +112,6 @@ The dataset consists of **two tables (sheets)**:
 </details>
 
 ## Data Cleaning & Preprocessing
-[In 1]:  
-```python
-df = pd.read_excel(ecommerce_retail_xlsx)
-df.head(10)
-```
-[Out 1]:  
-
-<img width="875" height="503" alt="image" src="https://github.com/user-attachments/assets/9ae6f480-ab40-43c6-a3af-8a02b9e47eef" />
-
-[In 2]:  
-```python
-# Check the general information of df
-df.info()
-```
-[Out 2]:  
-
-<img width="882" height="252" alt="image" src="https://github.com/user-attachments/assets/d475964e-d330-43c8-bf02-8cec874e6b17" />
-
-[In 3]:
-```python
-# Check Data Summary
-df.describe()
-```
-[Out 3]:
-
-<img width="540" height="263" alt="image" src="https://github.com/user-attachments/assets/c7954fa0-e5f9-469f-9a73-394810a9f7a0" />
 
 # 📊 Data Quality Summary & Validation Report
 
