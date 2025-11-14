@@ -212,7 +212,7 @@ During the initial data exploration phase, several data quality issues were iden
 
 **Action:**  
 - These transactions represent **canceled orders** and should be **removed** from the dataset.
-- 
+  
 ---
 
 ## Exploratory Data Analysis (EDA)
@@ -257,6 +257,21 @@ df = df.groupby(['CustomerID']).agg(
 )
 
 #### 🛠 Step 2. Assign RFM scores using Qcut
+
+**Recency (R)**  
+- Labels: 5, 4, 3, 2, 1  
+- Logic: smaller Recency = customer purchased more recently → higher score  
+- Recency small → score 5 (good)  
+- Recency large → score 1 (less desirable)  
+
+**Frequency (F)**  
+- Labels: 1, 2, 3, 4, 5  
+- Logic: higher frequency = better → higher score  
+
+**Monetary (M)**  
+- Labels: 1, 2, 3, 4, 5  
+- Logic: higher spending = better → higher score
+
 [In 7]:
 ```python
 r_labels = range(5, 0, -1)
