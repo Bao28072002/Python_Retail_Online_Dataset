@@ -128,6 +128,7 @@ During the initial data exploration phase, several data quality issues were iden
 ## ⚡ Key Issues Identified
 
 </details>
+   <summary>📊 (Click to expand)</summary>
 
 ### 1. Negative Values in `Quantity` and `UnitPrice`
 Negative values in these columns are not logically valid and require review.
