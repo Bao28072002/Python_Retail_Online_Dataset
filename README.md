@@ -343,6 +343,11 @@ plt.boxplot(data_join['Frequency'])
 
 
 #### 🛠 Step 5. Using IQR to handle outliers
+
+- IQR is the **range of the middle 50% of the data**, representing the "typical" values in the dataset.
+- IQR is used to **detect and remove outliers**, which are unusually high or low values that can skew analysis.  
+- By focusing on the middle 50% of data, it helps make **analysis and predictions more accurate** and **insights more reliable**.
+
 [In 12]:
 ```python
 #Monetary
@@ -372,15 +377,18 @@ fig=plt.figure(3,figsize=(9,6))
 plt.boxplot(data_join['Recency'])
 ```
 [Out 12]:
+### 🔹After Outliers
 
-**Monetary**  
-![Monetary](https://github.com/user-attachments/assets/e966cef8-5fea-45c8-b6d0-6442fd049664)
+- **Left (Monetary):**
+- **Middle (Recency):**
+- **Right (Frequency):**
 
-**Frequency**  
-![Frequency](https://github.com/user-attachments/assets/aacac9f9-d63f-4ed6-a0be-6e7f76ec0bc2)
+<p float="left">
+  <img width="300" alt="image4" src="https://github.com/user-attachments/assets/e966cef8-5fea-45c8-b6d0-6442fd049664" style="margin-right:5px"/>
+  <img width="300" alt="image5" src="https://github.com/user-attachments/assets/aacac9f9-d63f-4ed6-a0be-6e7f76ec0bc2" style="margin-right:5px"/>
+  <img width="300" alt="image6" src="https://github.com/user-attachments/assets/22d2cdab-da7f-427c-974e-f9497dbb5731"/>
+</p>
 
-**Recency**  
-![Recency](https://github.com/user-attachments/assets/22d2cdab-da7f-427c-974e-f9497dbb5731)
 
 ## 5. 🔍 Which metrics is important R, F or M?
 #### 🛠 Using correlation to find important metrics
