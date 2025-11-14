@@ -758,27 +758,27 @@ The segments can be grouped based on their contribution and performance:
 
 | Segment | Customer Count | Monetary Value | Key Insight |
 | :--- | :--- | :--- | :--- |
-| **🏆 Champions** | 300 | **655,549** (Highest) | This group yields the **highest monetary value**, making them the most valuable in terms of revenue contribution. |
+| **🏆 Champions** | 300 | **655,9** (Highest) | This group yields the **highest monetary value**, making them the most valuable in terms of revenue contribution. |
 | **🥈 At Risk** | 369 | 453,380 (2nd Highest) | High value, but potentially unstable. Requires retention strategies. |
-| **Loyal** | 334 | 566,694 (3rd Highest) | Very high value relative to the customer count, indicating high profitability per customer. |
-| **🥇 Hibernating Customers** | **789** (Highest) | 385,122 (Moderate/High) | The **largest segment by count**, and still contributes a significant monetary value. They need reactivation efforts. |
+| **Loyal** | 334 | 566,604 (3rd Highest) | Very high value relative to the customer count, indicating high profitability per customer. |
+| **🥇 Hibernating Customers** | **789** (Highest) | 319, (Moderate/High) | The **largest segment by count**, and still contributes a significant monetary value. They need reactivation efforts. |
 
 #### 2. Potential and Moderate Segments
 
 | Segment | Customer Count | Monetary Value | Key Insight |
 | :--- | :--- | :--- | :--- |
-| **Potential Loyalist** | 499 (2nd Highest) | 387,037 | A large group with good value. They are prime candidates for conversion into "Loyal" customers. |
-| **New Customers** | 305 | 66,414 | Moderate count, but low value. Focus should be on onboarding and first purchase retention. |
-| **About To Sleep** | 187 | 54,670 | Low count and low value, suggesting they are on the verge of becoming "Lost Customers." |
-| **Need Attention** | 220 | 293,915 | Moderate value, but low count. Strategies are needed to prevent defection. |
+| **Potential Loyalist** |  (2nd Highest) | 287,697 | A large group with good value. They are prime candidates for conversion into "Loyal" customers. |
+| **New Customers** | 308 | 64,654 | Moderate count, but low value. Focus should be on onboarding and first purchase retention. |
+| **About To Sleep** | 187 | 54,420 | Low count and low value, suggesting they are on the verge of becoming "Lost Customers." |
+| **Need Attention** | 220 | 252,915 | Moderate value, but low count. Strategies are needed to prevent defection. |
 
 #### 3. Lowest Performance Segments
 
 | Segment | Customer Count | Monetary Value | Key Insight |
 | :--- | :--- | :--- | :--- |
-| **Cannot Lose Them** | **79** (Lowest) | 109,785 | The smallest segment, but the monetary value is not the absolute lowest, implying a high **value per individual** customer. They must be prioritized for special retention campaigns. |
-| **Lost Customers** | 367 | **56,414** (Lowest) | A large group by count that currently provides very little value. |
-| **Promising** | 127 | 102,473 | Very low count and low value. |
+| **Cannot Lose Them** | **79** (Lowest) | 107,765 | The smallest segment, but the monetary value is not the absolute lowest, implying a high **value per individual** customer. They must be prioritized for special retention campaigns. |
+| **Lost Customers** | 367 | **65,422** (Lowest) | A large group by count that currently provides very little value. |
+| **Promising** | 127 | 114,517 | Very low count and low value. |
 
 ---
 
