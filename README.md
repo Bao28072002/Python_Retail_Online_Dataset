@@ -127,53 +127,73 @@ During the initial data exploration phase, several data quality issues were iden
 
 ## ⚡ Key Issues Identified
 
-</details>
-   <summary>📊 (Click to expand)</summary>
+<details>
+  <summary>🧹 <b>Data Quality Overview (Click to expand)</b></summary>
+
+---
 
 ### 1. Negative Values in `Quantity` and `UnitPrice`
-Negative values in these columns are not logically valid and require review.
-
-**Possible actions:**
-- Check for data entry or ETL errors.
-- Verify whether negative values indicate **refunds** or **cancellations**.
-- Remove or correct invalid data to ensure analytical accuracy.
+- Negative values are not logically valid.  
+- **Possible causes:**  
+  - Data entry or ETL errors  
+  - Refunds or cancellations  
+- **Action:**  
+  - Review, correct, or remove invalid rows
 
 ---
 
 ### 2. StockCode–Description Mismatch
-A discrepancy was observed:
-- **StockCode count:** 4070  
-- **Description count:** 4223  
-
-**Potential causes:**
-- A single `StockCode` may appear with multiple descriptions.
-- Some descriptions may not correspond to valid stock codes.
-- Data inconsistencies due to missing, duplicated, or incorrectly recorded values.
-
-**Recommendation:**  
-Conduct additional validation and cleaning to ensure consistency.
+- **Unique StockCode:** 4070  
+- **Unique Description:** 4223  
+- **Potential causes:**  
+  - One `StockCode` mapped to multiple descriptions  
+  - Descriptions not matching valid codes  
+  - Missing / duplicated / incorrect values  
+- **Recommendation:**  
+  - Validate and standardize product descriptions
 
 ---
 
-## ⚠ Manual Review Required
-Some orders contain **incorrect or suspicious product descriptions**.  
-These should be reviewed manually and flagged for further processing.
+### 3. Manual Review Required
+- Some orders contain incorrect or suspicious product descriptions  
+- **Action:**  
+  - Manually review and flag these entries
 
 ---
 
-## 🔎 Data Validation & Error Identification
-
-- **Negative Quantities & Cancellations:**  
-  Verified whether negative `Quantity` values correspond to cancellations based on the rule:  
-  `InvoiceNo` starting with `"C"` = cancellation.
-
-## 🚨 Identifying Invalid Transactions
-After identifying cancellation invoices, further validation is required:
-
-- Detect transactions where `Quantity` is negative **but** `InvoiceNo` does *not* start with `"C"`.  
-  → These indicate potential data errors and should be corrected or excluded.
+### 4. Data Validation: Negative Quantity Logic
+- Verified cancellation rule:  
+  → **InvoiceNo starting with `'C'` = Canceled order**
 
 ---
+
+### 5. Identifying Invalid Transactions
+- **Invalid Case A:**  
+  - `Quantity < 0` **and** InvoiceNo **does not** start with `'C'`  
+  → Data error → Remove  
+- **Invalid Case B:**  
+  - `UnitPrice < 0` **and** Description flagged incorrect  
+  → Invalid transaction → Remove  
+
+---
+
+### 6. Columns Recommended to Convert to String
+- `InvoiceNo`  
+- `StockCode`  
+- `Description`  
+- `CustomerID`  
+- `Country`
+
+---
+
+### 7. Cleaning Rule: Canceled Orders
+- **Condition:**  
+  - `Quantity < 0` **and** InvoiceNo starts with `'C'`  
+- **Action:**  
+  - Remove canceled invoices from dataset
+
+---
+
 </details>
 
 ## ✨ Conclusion & Recommendations
