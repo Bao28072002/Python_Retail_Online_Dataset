@@ -238,6 +238,21 @@ Unit_Quan_0
 ## Apply RFM Model
 
 #### 🛠 Step 1. Calculate RFM Score
+
+**Recency (R)**  
+- Labels: 5, 4, 3, 2, 1  
+- Logic: smaller Recency = customer purchased more recently → higher score  
+- Recency small → score 5 (good)  
+- Recency large → score 1 (less desirable)  
+
+**Frequency (F)**  
+- Labels: 1, 2, 3, 4, 5  
+- Logic: higher frequency = better → higher score  
+
+**Monetary (M)**  
+- Labels: 1, 2, 3, 4, 5  
+- Logic: higher spending = better → higher score
+
 [In 6]:
 
 ```python
@@ -257,20 +272,6 @@ df = df.groupby(['CustomerID']).agg(
 )
 
 #### 🛠 Step 2. Assign RFM scores using Qcut
-
-**Recency (R)**  
-- Labels: 5, 4, 3, 2, 1  
-- Logic: smaller Recency = customer purchased more recently → higher score  
-- Recency small → score 5 (good)  
-- Recency large → score 1 (less desirable)  
-
-**Frequency (F)**  
-- Labels: 1, 2, 3, 4, 5  
-- Logic: higher frequency = better → higher score  
-
-**Monetary (M)**  
-- Labels: 1, 2, 3, 4, 5  
-- Logic: higher spending = better → higher score
 
 [In 7]:
 ```python
