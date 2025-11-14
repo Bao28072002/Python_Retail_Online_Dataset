@@ -336,27 +336,12 @@ plt.boxplot(data_join['Frequency'])
 </p>
 
 
-<img width="781" height="491" alt="image" src="https://github.com/user-attachments/assets/315fcaea-352f-45d4-b7f8-2257484a8ce8" />
+<p float="left">
+  <img width="400" alt="image1" src="https://github.com/user-attachments/assets/315fcaea-352f-45d4-b7f8-2257484a8ce8" style="margin-right:5px"/>
+  <img width="400" alt="image2" src="https://github.com/user-attachments/assets/b9afa80f-8a29-4303-84c6-4d6cc45511c4" style="margin-right:5px"/>
+  <img width="400" alt="image3" src="https://github.com/user-attachments/assets/de585904-607e-4e2a-95c0-83a952ab5325"/>
+</p>
 
-[In 10]:
-```python
-#Outlier Recency
-fig=plt.figure(1,figsize=(9,6))
-plt.boxplot(data_join['Recency'])
-```
-[Out 10]:
-
-<img width="769" height="498" alt="image" src="https://github.com/user-attachments/assets/b9afa80f-8a29-4303-84c6-4d6cc45511c4" />
-
-[In 11]:
-```python
-#Outlier Frequency
-fig=plt.figure(1,figsize=(9,6))
-plt.boxplot(data_join['Frequency'])
-```
-[Out 11]:
-
-<img width="783" height="497" alt="image" src="https://github.com/user-attachments/assets/de585904-607e-4e2a-95c0-83a952ab5325" />
 
 #### 🛠 Step 5. Using IQR to handle outliers
 [In 12]:
